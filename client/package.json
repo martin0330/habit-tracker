@@ -1,5 +1,5 @@
 {
-  "name": "habit-tracker",
+  "name": "habit-tracker-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
