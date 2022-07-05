@@ -37,8 +37,9 @@
 - :computer: [Mitchell Frey](https://github.com/mfcodingbc)
 
 ## Links
-A link to the [Code]():
+A link to the [Code](https://github.com/mannygarcia98/habit-tracker):
 ```
+https://github.com/mannygarcia98/habit-tracker
 ```
 
 A link to the [Deployed Application]():
