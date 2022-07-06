@@ -1,5 +1,4 @@
-const User = require('./User');
-const Habit = require('./Habit');
-const Date = require('./Date')
+const User = require("./User");
+const Habit = require("./Habit");
 
-module.exports = { User, Habit, Date };
+module.exports = { User, Habit };
