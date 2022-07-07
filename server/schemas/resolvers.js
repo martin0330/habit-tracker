@@ -54,13 +54,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-
-// {
-//   "username": "tester2",
-//   "password": "test12345",
-//   "email": "test2@test.com"
-// }
-
-// {
-//   "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoidGVzdGVyMyIsImVtYWlsIjoidGVzdDNAdGVzdC5jb20iLCJfaWQiOiI2MmM3NWZhNTI0OGM3YmE5ZjViODIxN2QifSwiaWF0IjoxNjU3MjMzMzE3LCJleHAiOjE2NTcyNDA1MTd9.PzMWx_sliSlNfnNyCdVtpjliY65410JhG-m_Ia71j2E"
-// }
