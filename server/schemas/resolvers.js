@@ -5,6 +5,15 @@ const { User, Habit } = require("../models");
 
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).select("-__v -password").populate("habits");
+
+        return userData;
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
     habits: async () => {
       return Habit.find();
     },
@@ -50,4 +59,8 @@ module.exports = resolvers;
 //   "username": "tester2",
 //   "password": "test12345",
 //   "email": "test2@test.com"
+// }
+
+// {
+//   "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoidGVzdGVyMyIsImVtYWlsIjoidGVzdDNAdGVzdC5jb20iLCJfaWQiOiI2MmM3NWZhNTI0OGM3YmE5ZjViODIxN2QifSwiaWF0IjoxNjU3MjMzMzE3LCJleHAiOjE2NTcyNDA1MTd9.PzMWx_sliSlNfnNyCdVtpjliY65410JhG-m_Ia71j2E"
 // }
