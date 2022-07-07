@@ -16,11 +16,21 @@ const typeDefs = gql`
     habits: [Habit]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
     habits(username: String): [Habit]
     habit(_id: ID!): Habit
+  }
+
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
   }
 `;
 
