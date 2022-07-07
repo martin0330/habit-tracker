@@ -1,6 +1,7 @@
-// const { AuthenticationError } = require("apollo-server-express");
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
+
 const { User, Habit } = require("../models");
-// const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -13,21 +14,19 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    // users: async () => {
-    //   return User.find().select("-__v -password").populate("thoughts").populate("friends");
-    // },
-    user: async (parent, { email }) => {
-      return User.findOne({ email }).select("-__v -password").populate("habits");
-    },
-    habits: async (parent, { email }) => {
-      const params = email ? { email } : {};
-      return Habit.find(params);
+    habits: async () => {
+      return Habit.find();
     },
     habit: async (parent, { _id }) => {
       return Habit.findOne({ _id });
     },
+    users: async () => {
+      return User.find().select("-__v -password").populate("habits");
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).select("-__v -password").populate("habits");
+    },
   },
-
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -51,24 +50,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addLog: async (parent, { HabitId, reactionBody }, context) => {
-      if (context.user) {
-        const updatedHabit = await Habit.findOneAndUpdate({ _id: HabitId }, { $push: { reactions: { reactionBody, username: context.user.username } } }, { new: true, runValidators: true });
-
-        return updatedHabit;
-      }
-
-      throw new AuthenticationError("You need to be logged in!");
-    },
-    // addFriend: async (parent, { friendId }, context) => {
-    //   if (context.user) {
-    //     const updatedUser = await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { friends: friendId } }, { new: true }).populate("friends");
-
-    //     return updatedUser;
-    //   }
-
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
   },
 };
 
