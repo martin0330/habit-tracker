@@ -1,18 +1,20 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
 
-const { User, Habit } = require("../models");
+const { User, Habit } = require('../models');
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select("-__v -password").populate("habits");
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('habits');
 
         return userData;
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
     habits: async () => {
       return Habit.find();
@@ -21,11 +23,13 @@ const resolvers = {
       return Habit.findOne({ _id });
     },
     users: async () => {
-      return User.find().select("-__v -password").populate("habits");
+      return User.find().select('-__v -password').populate('habits');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).select("-__v -password").populate("habits");
-    },
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('habits');
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -38,19 +42,19 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
       return { token, user };
-    },
-  },
+    }
+  }
 };
 
 module.exports = resolvers;
