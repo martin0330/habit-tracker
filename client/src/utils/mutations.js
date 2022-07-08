@@ -38,7 +38,7 @@ export const SAVE_HABIT = gql`
     }
 `;
 
-export const Remove_habit = gql`
+export const REMOVE_habit = gql`
     mutation removeHabit($habitId: String!) {
         removeHabit(habitId: $habitId) {
             _id
