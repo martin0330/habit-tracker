@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
 import { SAVE_HABIT } from '../../utils/mutations';
-import { QUERY_HABITS, QUERY_ME } from '../../utils/queries';
+import { QUERY_HABIT, QUERY_ME } from '../../utils/queries';
 
 const HabitForm = () => {
   const [habitText, setText] = useState('');
@@ -23,9 +23,9 @@ const HabitForm = () => {
       }
 
       // update habits array's cache
-      const { habits } = cache.readQuery({ query: QUERY_HABITS });
+      const { habits } = cache.readQuery({ query: QUERY_HABIT });
       cache.writeQuery({
-        query: QUERY_HABITS,
+        query: QUERY_HABIT,
         data: { habits: [addHabit, ...habits] }
       });
     }

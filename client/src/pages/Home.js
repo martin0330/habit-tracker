@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Splash = () => {
+const Home = () => {
   return (
     <main>
       <div className=''>
@@ -22,4 +22,4 @@ const Splash = () => {
   );
 };
 
-export default Splash;
+export default Home;
