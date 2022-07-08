@@ -6,11 +6,13 @@ const habitSchema = new Schema({
     type: String,
     required: "Habit name is required.",
   },
-  completedAt: {
-    type: Date,
-    default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
-  },
+  completedAt: [
+    {
+      type: Date,
+      default: Date.now,
+      get: (timestamp) => dateFormat(timestamp),
+    },
+  ],
 });
 
 const Habit = model("Habit", habitSchema);

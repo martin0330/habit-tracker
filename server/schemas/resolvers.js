@@ -50,6 +50,17 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    addHabit: async (parent, args, context) => {
+      if (context.user) {
+        const habit = await Habit.create({ ...args, username: context.user.username });
+
+        await User.findByIdAndUpdate({ _id: context.user._id }, { $push: { habits: habit._id } }, { new: true });
+
+        return habit;
+      }
+
+      throw new AuthenticationError("You need to be logged in.");
+    },
   },
 };
 
