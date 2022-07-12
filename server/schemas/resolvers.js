@@ -62,18 +62,25 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in.");
     },
     addCompletedAt: async (parent, { habitId, completedAt }, context) => {
+      // if (context.user) {
+      //   const updatedHabit = await Habit.findOneAndUpdate({ _id: habitId }, { $push: completedAt }, { new: true, runValidator: true });
+
+      //   return updatedHabit;
+      // }
+
+      // throw new AuthenticationError("You need to be logged in!");
+
+      return await Habit.findOneAndUpdate({ _id: habitId }, { $push: completedAt }, { new: true, runValidator: true });
+    },
+    editHabitName: async (parent, { habitId, habitName }, context) => {
       if (context.user) {
-        const updatedHabit = await Habit.findOneAndUpdate({ _id: habitId }, { $push: completedAt }, { new: true, runValidator: true });
+        const updatedHabit = await Habit.findOneAndUpdate({ _id: habitId }, { habitName }, { new: true });
 
         return updatedHabit;
       }
 
       throw new AuthenticationError("You need to be logged in!");
-    },
-    editHabitName: async (parent, { habitId, updatedName }, context) => {
-      if (context.user) {
-        const updatedHabit = await Habit.findOneAndUpdate({ _id: habitId }, { $rename: { habitName: updatedName } });
-      }
+      // return await Habit.findOneAndUpdate({ _id: habitId }, { habitName }, { new: true });
     },
   },
 };
