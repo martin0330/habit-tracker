@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { useMutation } from "@apollo/client";
-import { ADD_HABIT } from "../../utils/mutations";
-import { QUERY_HABIT, QUERY_ME } from "../../utils/queries";
+import { useMutation } from '@apollo/client';
+import { ADD_HABIT } from '../../utils/mutations';
+import { QUERY_ME } from '../../utils/queries';
 
 const HabitForm = () => {
-  const [habitName, setText] = useState("");
+  const [habitName, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addHabit, { error }] = useMutation(ADD_HABIT, {
@@ -16,19 +16,19 @@ const HabitForm = () => {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, habits: [...me.habits, addHabit] } },
+          data: { me: { ...me, habits: [...me.habits, addHabit] } }
         });
       } catch (e) {
-        console.warn("First habit insertion by user!");
+        console.warn('First habit insertion by user!');
       }
 
-      // update habits array's cache
-      const { habits } = cache.readQuery({ query: QUERY_HABIT });
-      cache.writeQuery({
-        query: QUERY_HABIT,
-        data: { habits: [addHabit, ...habits] },
-      });
-    },
+      // // update habits array's cache
+      // const { habits } = cache.readQuery({ query: QUERY_HABIT });
+      // cache.writeQuery({
+      //   query: QUERY_HABIT,
+      //   data: { habits: [addHabit, ...habits] }
+      // });
+    }
   });
 
   const handleChange = (event) => {
@@ -44,11 +44,11 @@ const HabitForm = () => {
     try {
       // add habit to database
       await addHabit({
-        variables: { habitName },
+        variables: { habitName }
       });
 
       // clear form value
-      setText("");
+      setText('');
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
@@ -57,13 +57,23 @@ const HabitForm = () => {
 
   return (
     <div>
-      <p className={`m-0 ${characterCount === 280 || error ? "text-error" : ""}`}>
+      <p
+        className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+      >
         Character Count: {characterCount}/280
-        {error && <span className="ml-2">Something went wrong...</span>}
+        {error && <span className='ml-2'>Something went wrong...</span>}
       </p>
-      <form className="flex-row justify-center justify-space-between-md align-stretch" onSubmit={handleFormSubmit}>
-        <textarea placeholder="Get a New Habit Started!" value={habitName} className="form-input col-12 col-md-9" onChange={handleChange}></textarea>
-        <button className="btn col-12 col-md-3" type="submit">
+      <form
+        className='flex-row justify-center justify-space-between-md align-stretch'
+        onSubmit={handleFormSubmit}
+      >
+        <textarea
+          placeholder='Get a New Habit Started!'
+          value={habitName}
+          className='form-input col-12 col-md-9'
+          onChange={handleChange}
+        ></textarea>
+        <button className='btn col-12 col-md-3' type='submit'>
           Submit
         </button>
       </form>

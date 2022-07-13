@@ -9,7 +9,6 @@ export const QUERY_USER = gql`
       habits {
         _id
         habitName
-        completedAt
       }
     }
   }
@@ -24,7 +23,6 @@ export const QUERY_ME = gql`
       habits {
         _id
         habitName
-        completedAt
       }
     }
   }
@@ -34,8 +32,7 @@ export const QUERY_HABIT = gql`
   query habit($habitname: String!) {
     habit(habitName: $habitName) {
       _id
-      habitName
-      completedAt
+      habitNam
     }
   }
 `;
