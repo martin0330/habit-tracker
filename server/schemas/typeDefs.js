@@ -6,7 +6,7 @@ const typeDefs = gql`
   type Habit {
     _id: ID
     habitName: String
-    completedAt: String
+    completedAt: [String]
   }
 
   type User {
@@ -32,6 +32,10 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addHabit(habitName: String!): Habit
+    addCompletedAt(habitId: ID!, completedAt: String!): Habit
+    editHabitName(habitId: ID!, habitName: String!): Habit
+    deleteHabit(habitId: ID!): Habit
   }
 `;
 
