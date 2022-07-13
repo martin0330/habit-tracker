@@ -11,7 +11,7 @@ const Header = () => {
   };
 
   return (
-    <header className='bg-secondary mb-4 py-2 flex-row align-center'>
+    <header className='navbar text-decoration-none'>
       <div className='container flex-row justify-space-between-lg justify-center align-center'>
         <Link to='/'>
           <h1>Habit Tracker</h1>
