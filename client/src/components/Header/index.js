@@ -13,9 +13,15 @@ const Header = () => {
   return (
     <header className='navbar text-decoration-none'>
       <div className='container flex-row justify-space-between-lg justify-center align-center'>
-        <Link to='/'>
-          <h1>Habit Tracker</h1>
-        </Link>
+        {Auth.loggedIn() ? (
+          <Link to='/dashboard'>
+            <h1>Habit Tracker</h1>
+          </Link>
+        ) : (
+          <Link to='/'>
+            <h1>Habit Tracker</h1>
+          </Link>
+        )}
 
         <nav className='text-center'>
           {Auth.loggedIn() ? (

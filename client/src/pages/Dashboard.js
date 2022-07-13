@@ -14,9 +14,9 @@ const Dashboard = () => {
   return (
     <main>
       <div className=''>
-        {loggedIn && (
+        {loggedIn && userData && (
           <section className=''>
-            <Calendar />
+            <Calendar habits={userData.me.habits} />
           </section>
         )}
         {loggedIn && (

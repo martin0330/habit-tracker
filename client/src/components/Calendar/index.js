@@ -3,11 +3,19 @@ import '../Calendar/index.css';
 
 // import { Link } from 'react-router-dom';
 
-// 'habits' could be variable put into this function in order to display habits per day/interact with calendar...
-const Calendar = () => {
+const Calendar = ({ habits }) => {
+  const handleClick = (event) => {
+    if (event.target.style.backgroundColor) {
+      event.target.style.removeProperty('background-color');
+    } else {
+      event.target.style.setProperty('background-color', 'red');
+    }
+  };
+
   return (
     <section className='' id='calendar'>
       <div className='' id='fullDiv'>
+        <p className=''>JULY</p>
         <ul>
           <li>SUN</li>
           <li>MON</li>
@@ -16,6 +24,11 @@ const Calendar = () => {
           <li>THUR</li>
           <li>FRI</li>
           <li>SAT</li>
+          <li>26</li>
+          <li>27</li>
+          <li>28</li>
+          <li>29</li>
+          <li>30</li>
           <li>1</li>
           <li>2</li>
           <li>3</li>
@@ -29,7 +42,21 @@ const Calendar = () => {
           <li>11</li>
           <li>12</li>
           <li>13</li>
-          <li>14</li>
+          <li>
+            <div>
+              {habits &&
+                habits.map((habit) => (
+                  <div
+                    key={habit._id}
+                    className='card mb-3'
+                    onClick={handleClick}
+                  >
+                    {habit.habitName}
+                  </div>
+                ))}
+            </div>
+            14
+          </li>
           <li>15</li>
           <li>16</li>
           <li>17</li>
@@ -51,6 +78,8 @@ const Calendar = () => {
           <li>2</li>
           <li>3</li>
           <li>4</li>
+          <li>5</li>
+          <li>6</li>
         </ul>
       </div>
     </section>
