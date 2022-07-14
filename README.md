@@ -17,7 +17,7 @@
 ## Description
 
 ## Installation
-***Requirments***
+***Requirements***
 
 [React](https://reactjs.org/) | [Node.js](https://nodejs.org/en/)
 
@@ -29,6 +29,7 @@
 5. The application will then begin to run locally.
 
 ## Usage
+Digital habit tracker that reinforces habits by allowing users to mark off completed tasks
 
 ## Developers 
 - :computer: [Juan Garcia](https://github.com/jgarcia45)
@@ -42,9 +43,12 @@ A link to the [Code](https://github.com/mannygarcia98/habit-tracker):
 https://github.com/mannygarcia98/habit-tracker
 ```
 
-A link to the [Deployed Application]():
+A link to the [Deployed Application](https://vast-reef-90356.herokuapp.com):
 ```
 ```
+
+## Screenshot
+![habit tracker](https://user-images.githubusercontent.com/95774102/179081934-c9fa4cd3-5e3e-47bd-9a23-121f20a6b102.jpeg)
 
 ## License
 Copyright (c) Manny Garcia. All rights reserved.
