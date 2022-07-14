@@ -11,29 +11,29 @@ const Header = () => {
   };
 
   return (
-    <header className='navbar text-decoration-none'>
+    <header className='navbar'>
       <div className='container flex-row justify-space-between-lg justify-center align-center'>
         {Auth.loggedIn() ? (
-          <Link to='/dashboard'>
+          <Link className='navbar-brand' style={{textDecoration: 'none'}} to='/dashboard'>
             <h1>Habit Tracker</h1>
           </Link>
         ) : (
-          <Link to='/'>
+          <Link className='navbar-brand' style={{textDecoration: 'none'}} to='/'>
             <h1>Habit Tracker</h1>
           </Link>
         )}
 
-        <nav className='text-center'>
+        <nav className='justify-content-between'>
           {Auth.loggedIn() ? (
             <>
-              <a href='/' onClick={logout}>
+              <a className='btn btn-secondary' style={{textDecoration: 'none'}} href='/' onClick={logout}>
                 Logout
               </a>
             </>
           ) : (
             <>
-              <Link to='/login'>Login</Link>
-              <Link to='/signup'>Signup</Link>
+              <Link className='btn btn-secondary justify-content-between' style={{textDecoration: 'none'}} to='/login'>Login</Link>
+              <Link className='btn btn-secondary justify-content-between' style={{textDecoration: 'none'}} to='/signup'>Signup</Link>
             </>
           )}
         </nav>
