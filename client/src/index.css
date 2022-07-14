@@ -12,6 +12,9 @@
 .navbar {
   background-color: var(--primary-color);
 }
+.navbar-brand {
+  color: grey;
+}
 
 .footer {
   background-color: var(--primary-color);
@@ -25,6 +28,10 @@
 
 .card-header {
   background-color: var(--primary-color);
+}
+
+.btn {
+  text-decoration: none;
 }
 
 /* body {

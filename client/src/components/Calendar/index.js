@@ -12,10 +12,14 @@ const Calendar = ({ habits }) => {
     }
   };
 
+  // Gets Current Month
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let month = monthNames[new Date().getMonth()];
+
   return (
     <section className='' id='calendar'>
       <div className='' id='fullDiv'>
-        <p className=''>JULY</p>
+        <h1 className='text-center'>{month}</h1>
         <ul>
           <li>SUN</li>
           <li>MON</li>
@@ -43,19 +47,19 @@ const Calendar = ({ habits }) => {
           <li>12</li>
           <li>13</li>
           <li>
+            14
             <div>
               {habits &&
                 habits.map((habit) => (
                   <div
                     key={habit._id}
-                    className='card mb-3'
+                    className=''
                     onClick={handleClick}
                   >
                     {habit.habitName}
                   </div>
                 ))}
             </div>
-            14
           </li>
           <li>15</li>
           <li>16</li>
