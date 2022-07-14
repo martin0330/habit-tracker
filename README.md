@@ -45,6 +45,7 @@ https://github.com/mannygarcia98/habit-tracker
 
 A link to the [Deployed Application](https://vast-reef-90356.herokuapp.com):
 ```
+https://vast-reef-90356.herokuapp.com
 ```
 
 ## Screenshot
