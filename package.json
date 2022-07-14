@@ -24,5 +24,8 @@
   "homepage": "https://github.com/mannygarcia98/habit-tracker#readme",
   "devDependencies": {
     "concurrently": "^7.2.2"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.10.0"
   }
 }
